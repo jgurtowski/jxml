@@ -225,13 +225,13 @@ int jxml_get_tag_body(const struct jxml_range const *doc,
 
 int jxml_range_compare( const struct jxml_range const *a,
 			const struct jxml_range const *b){
-  int len_diff;
-  if ( (len_diff = JXML_RANGE_LEN_PTR(a) - JXML_RANGE_LEN_PTR(b)) != 0 )
-    return len_diff;
+  int diff;
+  if ( (diff = JXML_RANGE_LEN_PTR(a) - JXML_RANGE_LEN_PTR(b)) != 0 )
+    return diff;
 
   for( int i = 0; i < JXML_RANGE_LEN_PTR(a); ++i){
-    if ( (len_diff = *(a->start + i) - *(b->start + i)) != 0)
+    if ( (diff = *(a->start + i) - *(b->start + i)) != 0)
       break;
   }
-  return len_diff;
+  return diff;
 }
